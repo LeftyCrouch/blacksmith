@@ -1,0 +1,31 @@
+<div>
+  Coals: <span id="numberOfCoals"></span>
+</div>
+<div>
+  Temperature: <span id="temperature"></span>
+</div>
+<div>
+  Mass: <span id="mass"></span>
+</div>
+<div>
+  Excess Oxygen: <span id="oxygen"></span>
+</div>
+
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="main.js"></script>
+<script type="text/javascript" src="fire.js"></script>
+<script type="text/javascript" src="coal.js"></script>
+<script type="text/javascript" src="settings.js"></script>
+<script type="text/javascript">
+  runningLoop = new MainLoop()
+  bigCoal = new Coal(50)
+  medCoal = new Coal(20)
+  smallCoal = new Coal(1)
+  runningLoop.fire.addCoal(smallCoal)
+  runningLoop.fire.addCoal(medCoal)
+  runningLoop.fire.addCoal(bigCoal)
+  runningLoop.fire.addOxygen(100)
+  runningLoop.fire.calcTemperature()
+  runningLoop.fire.calcMass()
+  runningLoop.render()
+</script>
