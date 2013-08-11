@@ -19,7 +19,6 @@
     Coal.prototype.combust = function(oxygen, time) {
       var amountOxygenToConsume;
 
-      console.log("Heating up.");
       amountOxygenToConsume = this.calcOxygenToConsume(oxygen, time);
       this.consume(amountOxygenToConsume);
       return this.excessOxygen += oxygen - amountOxygenToConsume;
@@ -51,7 +50,6 @@
 
     Coal.prototype.cool = function(time) {
       if (this.temperature > 0 && this.mass > 0) {
-        console.log("Cooling Down.");
         return this.temperature -= time * Settings.coal.coolingTimeRatio;
       } else {
         return this.temperature = 0;
@@ -60,7 +58,7 @@
 
     Coal.prototype.calcMassReduction = function(time) {
       this.mass -= this.temperature * time * Settings.coal.massReductionPerTemperatureRatio;
-      if (this.mass < 0) {
+      if (this.mass < 0.5) {
         return this.mass = 0;
       }
     };

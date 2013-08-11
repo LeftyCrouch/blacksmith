@@ -12,7 +12,6 @@ class @Coal
     @calcMassReduction(time)
 
   combust: (oxygen, time) ->
-    console.log "Heating up."
     amountOxygenToConsume = @calcOxygenToConsume(oxygen, time)
     @consume(amountOxygenToConsume)
     @excessOxygen += (oxygen - amountOxygenToConsume)
@@ -36,14 +35,13 @@ class @Coal
 
   cool: (time) ->
     if @temperature > 0 && @mass > 0
-      console.log "Cooling Down."
       @temperature -= time * Settings.coal.coolingTimeRatio
     else
       @temperature = 0
 
   calcMassReduction: (time) ->
     @mass -= @temperature * time * Settings.coal.massReductionPerTemperatureRatio
-    @mass = 0 if @mass < 0
+    @mass = 0 if @mass < 0.5
 
   isDead: ->
     if @mass <= 0

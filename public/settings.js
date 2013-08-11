@@ -5,7 +5,7 @@
     function Settings() {}
 
     Settings.prototype.coal = {
-      oxygenToMassBurningCapacityRatio: 0.001,
+      oxygenToMassBurningCapacityRatio: 0.0001,
       massReductionPerTemperatureRatio: 0.000001,
       coolingTimeRatio: 0.0001,
       addedOxygenTemperatureIncreaseRatio: 0.5

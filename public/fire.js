@@ -18,6 +18,10 @@
       return this.coals.push(coal);
     };
 
+    Fire.prototype.addCoals = function(coals) {
+      return this.coals = this.coals.concat(coals);
+    };
+
     Fire.prototype.burn = function(time) {
       var coal, oxygenPerCoal, _i, _len, _ref;
 
@@ -69,7 +73,7 @@
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         coal = _ref[_i];
         if (coal.isDead()) {
-          _results.push(delete this.coals.pop(this.coals.indexOf(coal)));
+          _results.push(this.coals.pop(this.coals.indexOf(coal)));
         } else {
           _results.push(void 0);
         }
@@ -85,7 +89,7 @@
     function FireUi() {}
 
     FireUi.prototype.drawFire = function(fire) {
-      $("#numberOfCoals").html(fire.coals.length);
+      $("#numberOfCoals").html("" + fire.coals.length);
       $("#temperature").html(fire.temperature.toFixed(1));
       $("#mass").html(fire.mass.toFixed(2));
       return $("#oxygen").html(fire.oxygen.toFixed(2));

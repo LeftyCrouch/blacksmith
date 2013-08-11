@@ -12,6 +12,9 @@ class @Fire
   addCoal: (coal) ->
     @coals.push coal
 
+  addCoals: (coals) ->
+    @coals = @coals.concat coals
+
   burn: (time) ->
     oxygenPerCoal = @oxygen/@coals.length
     for coal in @coals
@@ -36,13 +39,13 @@ class @Fire
   clearDeadCoals: ->
     for coal in @coals
       if coal.isDead()
-        delete @coals.pop(@coals.indexOf coal)
+        @coals.pop(@coals.indexOf coal)
 
 class FireUi
   constructor: ->
 
   drawFire: (fire) ->
-    $("#numberOfCoals").html(fire.coals.length)
+    $("#numberOfCoals").html "#{fire.coals.length}"
     $("#temperature").html(fire.temperature.toFixed 1)
     $("#mass").html(fire.mass.toFixed 2)
     $("#oxygen").html(fire.oxygen.toFixed 2)
